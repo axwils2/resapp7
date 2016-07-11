@@ -1,0 +1,15 @@
+<p>
+  <b>Name:</b>
+  <%= rest.name %>
+</p>
+ 
+<p>
+  <b>Restaurant:</b>
+  <%= rest.address %>
+</p>
+
+<p>
+	<%= link_to 'Destroy Restaurant', [rest.owner, rest],
+		:confirm => 'Are you sure?',
+		:method => :delete %>
+</p>

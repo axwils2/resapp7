@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @owner.name %>
+</p>
+
+<h2>Restaurants</h2>
+<%= render @owner.rests %>
+
+<h2>Add a Restaurant<h2>
+<%= render "rests/form" %>
+
+	<br />
+
+<%= link_to 'Edit', edit_owner_path(@owner) %> |
+<%= link_to 'Back', owners_path %>
