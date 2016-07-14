@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Restaurants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rests.each do |rest| if rest.user_id == current_user.id%>
+      <tr>
+        <td><%= rest.name %></td>
+        <td><%= rest.address %></td>
+
+      </tr>
+      <% end %>
+    <% end %>
+
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Restaurant', new_user_rest_path %>

@@ -1,9 +1,9 @@
 class RestsController < ApplicationController
 	def create
-		@owner = Owner.find(params[:owner_id])
+		
 		restaurant = params[:rest]
-		@rest = @owner.rests.create(name: restaurant[:name], address: restaurant[:address])
-		redirect_to owner_path(@owner)
+		@rest = current_user.rests.create(name: restaurant[:name], address: restaurant[:address])
+		redirect_to user_rests_path(current_user)
 	end
 
 	def destroy
@@ -13,7 +13,15 @@ class RestsController < ApplicationController
 		redirect_to owner_path(@owner)
 	end
 
+	def index
+		@rests = Rest.all
+	end
+
+	def new
+		@rest = Rest.new
+	end
+
 	def rest_params
-      params.require(:rest).permit(:name, :address)
-    end
+    params.require(:rest).permit(:name, :address)
+  end
 end

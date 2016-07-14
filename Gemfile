@@ -49,8 +49,8 @@ group :development do
 
   gem 'better_errors', '~> 2.1', '>= 2.1.1'
 
-  gem 'pry-rails', '~> 0.3.4'
+  #gem 'pry-rails', '~> 0.3.4'
 
-  gem 'awesome_print', '~> 1.7'
+  gem 'awesome_print'
 end
 

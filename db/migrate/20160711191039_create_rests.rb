@@ -3,7 +3,7 @@ class CreateRests < ActiveRecord::Migration
     create_table :rests do |t|
       t.string :name
       t.string :address
-      t.references :owner, index: true, foreign_key: true
+      t.references :user, index: true
 
       t.timestamps null: false
     end
