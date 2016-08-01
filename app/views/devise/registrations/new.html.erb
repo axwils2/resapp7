@@ -21,6 +21,10 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label "Sign up as an Owner?" %>
+    <%= f.check_box :owner %>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

@@ -6,11 +6,24 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-owners = []
-3.times do |i|
-	owners << Owner.create(name: "Austin #{i}")
+10.times do |count| 
+	Rest.create(name: Faker::Name.name, address: Faker::Address.street_address, user_id: count + 1, category: "Mexican") 
 end
 
-owners.each do |owner|
-	owner.rests << Rest.create(name: "Rest Seed", address: "123 Road")
+10.times do |count|
+	Rest.create(name: Faker::Name.name, address: Faker::Address.street_address, user_id: count + 1, category: "Chinese")
 end
+
+10.times do |count|
+	Rest.create(name: Faker::Name.name, address: Faker::Address.street_address, user_id: count + 1, category: "Thai")
+end
+
+10.times do |count|
+	Rest.create(name: Faker::Name.name, address: Faker::Address.street_address, user_id: count + 1, category: "Italian")
+end
+
+10.times do |count|
+	Rest.create(name: Faker::Name.name, address: Faker::Address.street_address, user_id: count + 1, category: "Mediterranean")
+end
+
+
