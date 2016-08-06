@@ -1,29 +1,37 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
-10.times do |count| 
-	Rest.create(name: Faker::Name.name, address: Faker::Address.street_address, user_id: count + 1, category: "Mexican") 
+# Create Customers
+100.times do |index|
+	User.create(
+		first_name: Faker::Name.first_name,
+		last_name: Faker::Name.last_name,
+		email: "customer#{index}@seed.com",
+		password: 'password')
 end
 
-10.times do |count|
-	Rest.create(name: Faker::Name.name, address: Faker::Address.street_address, user_id: count + 1, category: "Chinese")
+#Create Owners
+5.times do |index|
+	User.create(
+		first_name: Faker::Name.first_name,
+		last_name: Faker::Name.last_name,
+		email: "owner#{index}@seed.com",
+		password: 'password',
+		owner: true)
 end
 
-10.times do |count|
-	Rest.create(name: Faker::Name.name, address: Faker::Address.street_address, user_id: count + 1, category: "Thai")
+owners = User.where('owner = true')
+
+owners.each do |owner|
+	(3..10).to_a.sample.times do
+		owner.rests << Rest.create(
+			name: Faker::Book.title,
+			address: Faker::Address.street_address)
+	end
 end
 
-10.times do |count|
-	Rest.create(name: Faker::Name.name, address: Faker::Address.street_address, user_id: count + 1, category: "Italian")
-end
+categories = ['Mexican', 'Italian', 'Indian', 'Chinese', 'Vietnamese', 'Polish',
+							'Thai', 'German', 'Pub', 'American', 'Asian-Fusion', 'BBQ']
 
-10.times do |count|
-	Rest.create(name: Faker::Name.name, address: Faker::Address.street_address, user_id: count + 1, category: "Mediterranean")
-end
+categories.map! { |category| Category.create(name: category) }
 
+restaurants = Rest.all
 
+restaurants.each { |restaurant| categories.sample.rests << restaurant}

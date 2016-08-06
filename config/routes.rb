@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   root :to => "home#index"
   get 'rests/destroy/:id' => 'rests#destroy', :as => 'destroy_rest'
   get 'home/show' => 'home#show', :as => 'show_home'
+  get 'rests' => 'rests#all', :as => 'all_rest'
 end

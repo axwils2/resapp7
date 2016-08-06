@@ -40,6 +40,12 @@ class RestsController < ApplicationController
 		@rest = Rest.new
 	end
 
+	def all
+		@rests = Rest.all
+	end
+
+	private
+
 	def rest_params
     params.require(:rest).permit(:name, :address, :category)
   end

@@ -11,10 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160718164452) do
+ActiveRecord::Schema.define(version: 20160806215955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "owners", force: :cascade do |t|
     t.string   "name"
@@ -28,9 +32,9 @@ ActiveRecord::Schema.define(version: 20160718164452) do
     t.string   "name"
     t.string   "address"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "category"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
   end
 
   add_index "rests", ["user_id"], name: "index_rests_on_user_id", using: :btree
@@ -49,6 +53,8 @@ ActiveRecord::Schema.define(version: 20160718164452) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "owner",                  default: false
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
